@@ -9,8 +9,44 @@
     tools:context="com.example.liarsdice.MainActivity" >
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Welcome to the Liar's Dice android version" />
+        android:text="Welcome to the Liar&apos;s Dice android version" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:text="How many players do you want to play with?" />
+    
+    <SeekBar
+        android:id="@+id/playersbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1" 
+        android:max="4"/>
+
+    <TextView
+        android:id="@+id/players"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playersbar"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/startgame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/playersbar"
+        android:layout_below="@+id/players"
+        android:max="3"
+        android:text="Begin Game" />
+
+
 
 </RelativeLayout>
