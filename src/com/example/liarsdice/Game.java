@@ -44,7 +44,8 @@ public class Game extends Activity {
 		number_of_players = Integer.parseInt(players_number);
 		
         // Creating the players and its TextViews;
-       TextView players_screen[] = new TextView[number_of_players];
+       TextView players_screen_name[] = new TextView[number_of_players];
+       TextView players_screen_dice[] = new TextView[number_of_players];
        Players players_list[] = new Players[number_of_players];
        
        Log.i(TAG, "Before the cycle");
@@ -52,26 +53,54 @@ public class Game extends Activity {
        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);  
         
        LinearLayout lL = new LinearLayout(this);
+       lL.setId(900);
+       LinearLayout mm = new LinearLayout(this);
        lL.setOrientation(LinearLayout.HORIZONTAL);
+       mm.setOrientation(LinearLayout.HORIZONTAL);
        
        for (int i = 0; i < number_of_players; i++){
-        players_list[i] = new Players("nome   ",5,1);
-        players_screen[i] = new TextView(this);
-        players_screen[i].setId(i);
-        players_screen[i].setText(players_list[i].Get_Name());
+        players_list[i] = new Players("nome   ",3,1);
+        players_screen_name[i] = new TextView(this);
+        players_screen_name[i].setId(i);
+        players_screen_name[i].setText(players_list[i].Get_Name());
+        
+ 
+       
+        
+        players_screen_dice[i] = new TextView(this);
+        players_screen_dice[i].setId(100+i);
+        players_screen_dice[i].setText("XXX");
+        
         if( i > 0){
-        params.addRule(RelativeLayout.RIGHT_OF,i-1); 
-        }
-        lL.addView(players_screen[i]);
+            params.addRule(RelativeLayout.RIGHT_OF,i-1); 
+            }
+    
+        lL.addView(players_screen_name[i]);
         
+        mm.addView(players_screen_dice[i]);
         }
-        
+       
+       
        relative.addView(lL);
        
-  
+       RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+       param.addRule(RelativeLayout.BELOW,900); 
+       relative.addView(mm,param);
+       
+       Start_Game(players_list,number_of_players);
+       
+       for (int i = 0; i < number_of_players; i++){
+    	   players_screen_dice[i].setText(""+players_list[i].Get_Dice_Values()[0]+" "+players_list[i].Get_Dice_Values()[1]+" "+players_list[i].Get_Dice_Values()[2]+"  ");
+       }
        
     }
 
+	Players[] Start_Game(Players[] players, int number_players){
+		for(int i = 0; i < number_players;i++){
+			players[i].Shuffle_Dices();
+		}
+		return players; 
+	}
 	
 	@Override
 	public void onResume() {

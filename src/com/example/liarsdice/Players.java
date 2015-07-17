@@ -28,7 +28,7 @@ public class Players {
 	    return randomNum;
 	}
 	
-	public void Shuffle_Dices(int dice_number){
+	public void Shuffle_Dices(){
 		dice_values = new int[dice_number];
 		for(int i = 0; i < dice_number; i++){
 			dice_values[i] = random();
