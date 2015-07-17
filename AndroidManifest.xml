@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".Game"
-            android:label="Game" >
+            android:label="Game"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

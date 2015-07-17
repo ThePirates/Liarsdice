@@ -29,7 +29,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);	
 		
 		Initialize_Variables();
-		
 		players_bar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 	        
 	           
@@ -56,7 +55,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, Game.class);
-				String number = players_number_view.getText().toString();
+				String number = Integer.toString(players_number);
 				intent.putExtra(NUMBER_PLAYERS, number);
 				startActivity(intent);
 			}		

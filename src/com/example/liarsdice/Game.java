@@ -13,24 +13,64 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.graphics.Color;  
 
 
 public class Game extends Activity {
 	public final static String NUMBER_PLAYERS = "com.example.liarsdice.PLAYERSNUMBER";
-	private final static String TAG = "Activity";
+	private final static String TAG = "GAME";
 	String players_number;
-	private TextView players_number_view; 
-
-
+	int number_of_players;
+	private TextView players_number_view; 	
+	RelativeLayout relative;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.game_l);	
+		Log.i("TAG", "Entered onCreate()");
+		setContentView(R.layout.game_l);
+        relative =  (RelativeLayout) findViewById(R.id.board);
+
 		Intent intent = getIntent();
+		
 		players_number = intent.getStringExtra(MainActivity.NUMBER_PLAYERS);
-		players_number_view = (TextView) findViewById(R.id.players);
-		players_number_view.setText("Number of players:" + players_number);
-	}
+		//players_number_view = (TextView) findViewById(R.id.players);
+		Log.i(TAG, "Before the problem");
+		//players_number_view.setText("Number of players:" + players_number);
+		Log.i("SHOW_TEXT", players_number);
+		number_of_players = Integer.parseInt(players_number);
+		
+        // Creating the players and its TextViews;
+       TextView players_screen[] = new TextView[number_of_players];
+       Players players_list[] = new Players[number_of_players];
+       
+       Log.i(TAG, "Before the cycle");
+        
+       RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);  
+        
+       LinearLayout lL = new LinearLayout(this);
+       lL.setOrientation(LinearLayout.HORIZONTAL);
+       
+       for (int i = 0; i < number_of_players; i++){
+        players_list[i] = new Players("nome   ",5,1);
+        players_screen[i] = new TextView(this);
+        players_screen[i].setId(i);
+        players_screen[i].setText(players_list[i].Get_Name());
+        if( i > 0){
+        params.addRule(RelativeLayout.RIGHT_OF,i-1); 
+        }
+        lL.addView(players_screen[i]);
+        
+        }
+        
+       relative.addView(lL);
+       
+  
+       
+    }
 
 	
 	@Override
