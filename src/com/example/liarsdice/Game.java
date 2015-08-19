@@ -18,6 +18,10 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.graphics.Color;  
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+
 
 
 public class Game extends Activity {
@@ -27,6 +31,7 @@ public class Game extends Activity {
 	int number_of_players;
 	private TextView players_number_view; 	
 	RelativeLayout relative;
+	 private RadioGroup radioGroup;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -93,6 +98,39 @@ public class Game extends Activity {
     	   players_screen_dice[i].setText(""+players_list[i].Get_Dice_Values()[0]+" "+players_list[i].Get_Dice_Values()[1]+" "+players_list[i].Get_Dice_Values()[2]+"  ");
        }
        
+       
+       radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
+
+       radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // find which radio button is selected
+                if(checkedId == R.id.rbutton1) {
+                    Toast.makeText(getApplicationContext(), "choice: 1",
+                            Toast.LENGTH_SHORT).show();
+                } else if(checkedId == R.id.rbutton2) {
+                    Toast.makeText(getApplicationContext(), "choice: 2",
+                            Toast.LENGTH_SHORT).show();
+                } else if(checkedId == R.id.rbutton3) {
+                    Toast.makeText(getApplicationContext(), "choice: 3",
+                            Toast.LENGTH_SHORT).show();
+                } else if(checkedId == R.id.rbutton4) {
+                    Toast.makeText(getApplicationContext(), "choice: 4",
+                            Toast.LENGTH_SHORT).show();
+                } else if(checkedId == R.id.rbutton5) {
+                    Toast.makeText(getApplicationContext(), "choice: 5",
+                            Toast.LENGTH_SHORT).show();
+                } else if(checkedId == R.id.rbutton6) {
+                    Toast.makeText(getApplicationContext(), "choice: 6",
+                            Toast.LENGTH_SHORT).show();
+                } 
+                
+                else {
+                    Toast.makeText(getApplicationContext(), "choice: Vibration",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });  
     }
 
 	Players[] Start_Game(Players[] players, int number_players){
@@ -102,6 +140,8 @@ public class Game extends Activity {
 		return players; 
 	}
 	
+	
+
 	@Override
 	public void onResume() {
 		super.onResume();
