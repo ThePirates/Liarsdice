@@ -21,8 +21,6 @@ public class Players {
 	public int random(){
 	    Random rand = new Random();
 
-	    // nextInt is normally exclusive of the top value,
-	    // so add 1 to make it inclusive
 	    int randomNum = rand.nextInt((MAX - 1) + 1) + 1;
 
 	    return randomNum;
@@ -40,7 +38,10 @@ public class Players {
 	}
 	
 	public void Remove_Dice(int a){
-		dice_number = dice_number - a;
+		if (dice_number > 0){
+			dice_number = dice_number - a;
+			dice_values[dice_number] = 0;
+		}
 	}
 	
 	public void Insert_Dice(int a){
@@ -49,6 +50,10 @@ public class Players {
 	
 	public void Pontuaction(int p){
 		pontuaction += p;
+	}
+
+	public int Get_Dice_Number(){
+		return dice_number;
 	}
 	
 	public String Get_Name(){

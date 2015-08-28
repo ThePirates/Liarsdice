@@ -25,7 +25,11 @@
         android:layout_centerHorizontal="true"
         android:text="O jogador x apostou em k dados de valor y"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-        
+
+       <SeekBar
+           android:id="@+id/dice_number"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
 
         <RadioGroup 
             android:id="@+id/radioGroup1"
