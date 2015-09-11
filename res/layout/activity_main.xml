@@ -47,6 +47,29 @@
         android:max="3"
         android:text="Begin Game" />
 
+    <Button
+        android:id="@+id/client"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/players"
+        android:layout_below="@+id/players"
+        android:text="Search for games nearby" />
 
+    <Button
+        android:id="@+id/host"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/startgame"
+        android:layout_toLeftOf="@+id/startgame"
+        android:text="Host Server" />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/host"
+        android:layout_toRightOf="@+id/players" >
+
+    </ListView>
 
 </RelativeLayout>

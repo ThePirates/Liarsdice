@@ -61,7 +61,19 @@ public class MainActivity extends Activity {
 			}		
 		});
 
+		
+		Button host = (Button) findViewById(R.id.host);
+		
+		host.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, Server_Activity.class);
+				startActivity(intent);
+			}		
+		});
 	}
+	
+	
 
 	
 	@Override

@@ -26,6 +26,11 @@
             android:label="Game"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+        android:name=".Server_Activity"
+        android:label="Server_Activity">
+ 		</activity>
     </application>
-
+ <uses-permission android:name="android.permission.BLUETOOTH" />
+ <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 </manifest>
